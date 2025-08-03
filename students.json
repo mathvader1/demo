@@ -1,0 +1,402 @@
+[
+  {
+    "student_id": 554,
+    "name": "김준서",
+    "grade": 9,
+    "problem_count": 16929,
+    "correct_count": "14305",
+    "accuracy": "84.50"
+  },
+  {
+    "student_id": 420,
+    "name": "박시환",
+    "grade": 12,
+    "problem_count": 16494,
+    "correct_count": "11114",
+    "accuracy": "67.38"
+  },
+  {
+    "student_id": 27,
+    "name": "신지연",
+    "grade": 10,
+    "problem_count": 14757,
+    "correct_count": "11292",
+    "accuracy": "76.52"
+  },
+  {
+    "student_id": 590,
+    "name": "강건우",
+    "grade": 9,
+    "problem_count": 13218,
+    "correct_count": "9792",
+    "accuracy": "74.08"
+  },
+  {
+    "student_id": 706,
+    "name": "김현수",
+    "grade": 9,
+    "problem_count": 8619,
+    "correct_count": "4618",
+    "accuracy": "53.58"
+  },
+  {
+    "student_id": 684,
+    "name": "조성준",
+    "grade": 8,
+    "problem_count": 7844,
+    "correct_count": "5801",
+    "accuracy": "73.95"
+  },
+  {
+    "student_id": 693,
+    "name": "최정환",
+    "grade": 9,
+    "problem_count": 7585,
+    "correct_count": "4143",
+    "accuracy": "54.62"
+  },
+  {
+    "student_id": 357,
+    "name": "조성준",
+    "grade": 6,
+    "problem_count": 7304,
+    "correct_count": "4398",
+    "accuracy": "60.21"
+  },
+  {
+    "student_id": 426,
+    "name": "구동현",
+    "grade": 7,
+    "problem_count": 6668,
+    "correct_count": "4372",
+    "accuracy": "65.57"
+  },
+  {
+    "student_id": 588,
+    "name": "강소이",
+    "grade": 7,
+    "problem_count": 4875,
+    "correct_count": "3624",
+    "accuracy": "74.34"
+  },
+  {
+    "student_id": 542,
+    "name": "최유준",
+    "grade": 7,
+    "problem_count": 4742,
+    "correct_count": "4146",
+    "accuracy": "87.43"
+  },
+  {
+    "student_id": 537,
+    "name": "고찬희",
+    "grade": 6,
+    "problem_count": 4434,
+    "correct_count": "3222",
+    "accuracy": "72.67"
+  },
+  {
+    "student_id": 570,
+    "name": "김이안",
+    "grade": 6,
+    "problem_count": 4424,
+    "correct_count": "3148",
+    "accuracy": "71.16"
+  },
+  {
+    "student_id": 512,
+    "name": "박준우",
+    "grade": 6,
+    "problem_count": 3959,
+    "correct_count": "2779",
+    "accuracy": "70.19"
+  },
+  {
+    "student_id": 628,
+    "name": "이은오",
+    "grade": 5,
+    "problem_count": 3872,
+    "correct_count": "2432",
+    "accuracy": "62.81"
+  },
+  {
+    "student_id": 766,
+    "name": "황시연",
+    "grade": 8,
+    "problem_count": 3738,
+    "correct_count": "3013",
+    "accuracy": "80.60"
+  },
+  {
+    "student_id": 528,
+    "name": "배서연",
+    "grade": 5,
+    "problem_count": 3663,
+    "correct_count": "2908",
+    "accuracy": "79.39"
+  },
+  {
+    "student_id": 713,
+    "name": "강건우",
+    "grade": 10,
+    "problem_count": 3647,
+    "correct_count": "2374",
+    "accuracy": "65.09"
+  },
+  {
+    "student_id": 470,
+    "name": "심서연",
+    "grade": 10,
+    "problem_count": 3455,
+    "correct_count": "2875",
+    "accuracy": "83.21"
+  },
+  {
+    "student_id": 555,
+    "name": "이민하",
+    "grade": 5,
+    "problem_count": 3308,
+    "correct_count": "2729",
+    "accuracy": "82.50"
+  },
+  {
+    "student_id": 756,
+    "name": "구동현",
+    "grade": 7,
+    "problem_count": 3255,
+    "correct_count": "2481",
+    "accuracy": "76.22"
+  },
+  {
+    "student_id": 643,
+    "name": "이지안",
+    "grade": 5,
+    "problem_count": 3105,
+    "correct_count": "2473",
+    "accuracy": "79.65"
+  },
+  {
+    "student_id": 621,
+    "name": "김규리",
+    "grade": 5,
+    "problem_count": 3075,
+    "correct_count": "2433",
+    "accuracy": "79.12"
+  },
+  {
+    "student_id": 663,
+    "name": "이지아",
+    "grade": 6,
+    "problem_count": 2700,
+    "correct_count": "1917",
+    "accuracy": "71.00"
+  },
+  {
+    "student_id": 566,
+    "name": "이우진",
+    "grade": 6,
+    "problem_count": 2660,
+    "correct_count": "1278",
+    "accuracy": "48.05"
+  },
+  {
+    "student_id": 648,
+    "name": "김기윤",
+    "grade": 5,
+    "problem_count": 2590,
+    "correct_count": "1944",
+    "accuracy": "75.06"
+  },
+  {
+    "student_id": 649,
+    "name": "김기찬",
+    "grade": 5,
+    "problem_count": 2550,
+    "correct_count": "1761",
+    "accuracy": "69.06"
+  },
+  {
+    "student_id": 516,
+    "name": "이희수",
+    "grade": 6,
+    "problem_count": 2380,
+    "correct_count": "1669",
+    "accuracy": "70.13"
+  },
+  {
+    "student_id": 712,
+    "name": "신지후",
+    "grade": 7,
+    "problem_count": 2364,
+    "correct_count": "1720",
+    "accuracy": "72.76"
+  },
+  {
+    "student_id": 531,
+    "name": "강서아",
+    "grade": 4,
+    "problem_count": 2343,
+    "correct_count": "1670",
+    "accuracy": "71.28"
+  },
+  {
+    "student_id": 754,
+    "name": "강소이",
+    "grade": 7,
+    "problem_count": 2317,
+    "correct_count": "1919",
+    "accuracy": "82.82"
+  },
+  {
+    "student_id": 613,
+    "name": "오시훈",
+    "grade": 4,
+    "problem_count": 2285,
+    "correct_count": "1701",
+    "accuracy": "74.44"
+  },
+  {
+    "student_id": 705,
+    "name": "이세련",
+    "grade": 5,
+    "problem_count": 2220,
+    "correct_count": "1777",
+    "accuracy": "80.05"
+  },
+  {
+    "student_id": 616,
+    "name": "형대기",
+    "grade": 6,
+    "problem_count": 2206,
+    "correct_count": "1838",
+    "accuracy": "83.32"
+  },
+  {
+    "student_id": 647,
+    "name": "이유정",
+    "grade": 5,
+    "problem_count": 2130,
+    "correct_count": "1462",
+    "accuracy": "68.64"
+  },
+  {
+    "student_id": 762,
+    "name": "한미우",
+    "grade": 6,
+    "problem_count": 2038,
+    "correct_count": "1026",
+    "accuracy": "50.34"
+  },
+  {
+    "student_id": 721,
+    "name": "최민준",
+    "grade": 7,
+    "problem_count": 1959,
+    "correct_count": "1279",
+    "accuracy": "65.29"
+  },
+  {
+    "student_id": 768,
+    "name": "강지원",
+    "grade": 7,
+    "problem_count": 1909,
+    "correct_count": "1156",
+    "accuracy": "60.56"
+  },
+  {
+    "student_id": 697,
+    "name": "김태연",
+    "grade": 5,
+    "problem_count": 1815,
+    "correct_count": "1446",
+    "accuracy": "79.67"
+  },
+  {
+    "student_id": 576,
+    "name": "인선율",
+    "grade": 5,
+    "problem_count": 1655,
+    "correct_count": "1224",
+    "accuracy": "73.96"
+  },
+  {
+    "student_id": 685,
+    "name": "안희근",
+    "grade": 5,
+    "problem_count": 1600,
+    "correct_count": "1303",
+    "accuracy": "81.44"
+  },
+  {
+    "student_id": 717,
+    "name": "소린우",
+    "grade": 4,
+    "problem_count": 1592,
+    "correct_count": "1175",
+    "accuracy": "73.81"
+  },
+  {
+    "student_id": 578,
+    "name": "테스트",
+    "grade": 5,
+    "problem_count": 1564,
+    "correct_count": "1106",
+    "accuracy": "70.72"
+  },
+  {
+    "student_id": 627,
+    "name": "배서준",
+    "grade": 5,
+    "problem_count": 1549,
+    "correct_count": "1195",
+    "accuracy": "77.15"
+  },
+  {
+    "student_id": 718,
+    "name": "이시후",
+    "grade": 5,
+    "problem_count": 1535,
+    "correct_count": "1252",
+    "accuracy": "81.56"
+  },
+  {
+    "student_id": 786,
+    "name": "이은오",
+    "grade": 5,
+    "problem_count": 1535,
+    "correct_count": "656",
+    "accuracy": "42.74"
+  },
+  {
+    "student_id": 623,
+    "name": "구나은",
+    "grade": 6,
+    "problem_count": 1529,
+    "correct_count": "1130",
+    "accuracy": "73.90"
+  },
+  {
+    "student_id": 676,
+    "name": "최다인",
+    "grade": 5,
+    "problem_count": 1485,
+    "correct_count": "1158",
+    "accuracy": "77.98"
+  },
+  {
+    "student_id": 632,
+    "name": "배윤제",
+    "grade": 4,
+    "problem_count": 1410,
+    "correct_count": "1197",
+    "accuracy": "84.89"
+  },
+  {
+    "student_id": 709,
+    "name": "염동현",
+    "grade": 4,
+    "problem_count": 1400,
+    "correct_count": "1147",
+    "accuracy": "81.93"
+  }
+]
