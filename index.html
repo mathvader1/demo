@@ -312,9 +312,23 @@
                 const response = await fetch('./training_data.json');
                 const data = await response.json();
                 
-                console.log(`✅ 실제 학습 데이터 로딩 완료: ${data.length}개`);
+                console.log('📊 JSON 데이터 형식 확인:', data);
+                console.log('📊 데이터 타입:', typeof data);
+                console.log('📊 배열 여부:', Array.isArray(data));
                 
-                return data.slice(0, limit).map(item => ({
+                // 데이터가 배열이 아닐 경우 배열로 변환
+                let trainingArray;
+                if (Array.isArray(data)) {
+                    trainingArray = data;
+                } else if (data.data && Array.isArray(data.data)) {
+                    trainingArray = data.data;  // {success: true, data: [...]} 형식일 경우
+                } else {
+                    throw new Error('데이터가 배열 형식이 아닙니다');
+                }
+                
+                console.log(`✅ 실제 학습 데이터 로딩 완료: ${trainingArray.length}개`);
+                
+                return trainingArray.slice(0, limit).map(item => ({
                     user: item.student_id % 50,
                     item: item.problem_id % 100,
                     label: item.label
