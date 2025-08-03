@@ -339,11 +339,11 @@
             }
         }
 
-        async function loadRealCandidates(problemId = 89978, limit = 200) {
+        async function loadRealCandidates(problemId = 17342, limit = 200) {
             try {
                 console.log(`🔄 실제 후보군 로딩 중... (정적 JSON 파일)`);
                 
-                const response = await fetch('./candidates_89978.json');
+                const response = await fetch('./candidates_17342.json');
                 const data = await response.json();
                 
                 console.log(`✅ 실제 후보군 로딩 완료: ${data.length}개`);
