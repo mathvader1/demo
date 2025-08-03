@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCF 모델 온라인 데모 - 올바른 버전</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/4.2.0/tf.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        button:disabled {
+            background: #888;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .log {
+            background: rgba(0, 0, 0, 0.7);
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .status {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        
+        .progress {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .metric {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4ECDC4;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .github-info {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4ECDC4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 NCF 모델 온라인 데모 (올바른 버전)</h1>
+        
+        <div class="github-info">
+            <strong>🔧 수정사항:</strong> 빈도 기반 추천 로직이 올바르게 수정되었습니다.<br>
+            <strong>📊 올바른 계산:</strong> 종합점수 = NCF 정답률 × 가중치 + 빈도 오답률 × 가중치
+        </div>
+        
+        <div class="section">
+            <h3>📊 데이터 및 모델 설정</h3>
+            
+            <div style="margin-bottom: 20px;">
+                <label>데이터 소스:</label>
+                <select id="dataSource" onchange="toggleDataSource()">
+                    <option value="synthetic">가상 데이터 생성</option>
+                    <option value="csv">CSV 파일 업로드</option>
+                </select>
+            </div>
+            
+            <div id="csvUpload" style="display: none; margin-bottom: 20px;">
+                <label>CSV 파일 (student_id,problem_id,label):</label>
+                <input type="file" id="csvFile" accept=".csv" onchange="handleCSVUpload(event)">
+                <div id="csvStatus" style="margin-top: 10px; font-size: 14px;"></div>
+                <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 5px;">
+                    예시: 255,12701,1 (사용자255가 문제12701을 맞춤)
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div>
+                    <label>사용자 수:</label>
+                    <input type="number" id="numUsers" value="50" min="10" max="200">
+                </div>
+                <div>
+                    <label>아이템 수:</label>
+                    <input type="number" id="numItems" value="100" min="50" max="500">
+                </div>
+                <div>
+                    <label>임베딩 크기:</label>
+                    <input type="number" id="embSize" value="8" min="4" max="32">
+                </div>
+                <div>
+                    <label>학습 데이터 수:</label>
+                    <input type="number" id="numSamples" value="1000" min="500" max="5000">
+                </div>
+                <div>
+                    <label>에포크 수:</label>
+                    <input type="number" id="epochs" value="10" min="5" max="50">
+                </div>
+                <div>
+                    <label>학습률:</label>
+                    <input type="number" id="learningRate" value="0.01" min="0.001" max="0.1" step="0.001">
+                </div>
+            </div>
+            
+            <button id="startTraining">🎯 NCF 모델 학습 시작</button>
+        </div>
+        
+        <div class="section">
+            <h3>📈 학습 진행상황</h3>
+            <div class="status" id="status">준비 완료</div>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value" id="currentEpoch">0</div>
+                    <div class="metric-label">현재 에포크</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="trainLoss">0.0000</div>
+                    <div class="metric-label">학습 손실</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="valLoss">0.0000</div>
+                    <div class="metric-label">검증 손실</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value" id="accuracy">0.0%</div>
+                    <div class="metric-label">정확도</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>📝 학습 로그</h3>
+            <div class="log" id="log"></div>
+        </div>
+        
+        <div class="section">
+            <h3>🔮 예측 테스트</h3>
+            <div class="controls">
+                <div>
+                    <label>사용자 ID:</label>
+                    <input type="number" id="testUser" value="255" min="0">
+                </div>
+                <div>
+                    <label>아이템 ID:</label>
+                    <input type="number" id="testItem" value="12701" min="0">
+                </div>
+                <div>
+                    <button id="predict">예측하기</button>
+                </div>
+            </div>
+            
+            <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin: 10px 0;">
+                💡 팁: 사용자 255는 실제 CSV 데이터의 고능력 학생입니다
+            </div>
+            
+            <div id="predictionResult" style="text-align: center; margin-top: 20px; font-size: 18px;"></div>
+        </div>
+        
+        <div class="section">
+            <h3>🎯 실전 추천 시스템 테스트</h3>
+            
+            <div style="margin-bottom: 20px;">
+                <h4>시나리오 1: 틀린 문제 기반 추천</h4>
+                <div class="controls">
+                    <div>
+                        <label>틀린 문제 ID:</label>
+                        <input type="number" id="wrongProblem" value="34119" placeholder="학생이 틀린 문제">
+                    </div>
+                    <div>
+                        <label>해당 학생 ID:</label>
+                        <input type="number" id="wrongStudent" value="255" placeholder="문제를 틀린 학생">
+                    </div>
+                    <div>
+                        <button id="analyzeWrongProblem">🔍 분석 시작</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h4>시나리오 2: 하이브리드 추천 (올바른 로직)</h4>
+                <div class="controls">
+                    <div>
+                        <label>NCF 가중치 (0.0-1.0):</label>
+                        <input type="number" id="ncfWeight" value="0.6" step="0.1" min="0" max="1">
+                    </div>
+                    <div>
+                        <label>빈도 가중치 (자동계산):</label>
+                        <input type="number" id="freqWeight" value="0.4" step="0.1" min="0" max="1" readonly>
+                    </div>
+                    <div>
+                        <button id="hybridRecommend">🚀 하이브리드 추천</button>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,0,0.1); padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 12px;">
+                    <strong>📊 올바른 계산 공식:</strong><br>
+                    종합점수 = NCF정답률 × NCF가중치 + 빈도오답률 × 빈도가중치<br>
+                    <strong>의미:</strong> 오답률이 높을수록 더 중요한 복습 문제로 판단
+                </div>
+            </div>
+            
+            <div id="analysisResult" style="margin-top: 20px; font-size: 14px;"></div>
+        </div>
+    </div>
+
+    <script>
+        class NCFModel {
+            constructor(numUsers, numItems, embSize) {
+                this.numUsers = numUsers;
+                this.numItems = numItems;
+                this.embSize = embSize;
+                this.model = null;
+                this.isTraining = false;
+                this.csvData = null;
+            }
+            
+            log(message) {
+                const logElement = document.getElementById('log');
+                const timestamp = new Date().toLocaleTimeString();
+                logElement.textContent += `[${timestamp}] ${message}\n`;
+                logElement.scrollTop = logElement.scrollHeight;
+            }
+            
+            updateStatus(status) {
+                document.getElementById('status').textContent = status;
+            }
+            
+            updateProgress(progress) {
+                document.getElementById('progressBar').style.width = `${progress}%`;
+            }
+            
+            updateMetrics(epoch, trainLoss, valLoss, accuracy) {
+                document.getElementById('currentEpoch').textContent = epoch;
+                document.getElementById('trainLoss').textContent = trainLoss.toFixed(4);
+                document.getElementById('valLoss').textContent = valLoss.toFixed(4);
+                document.getElementById('accuracy').textContent = `${(accuracy * 100).toFixed(1)}%`;
+            }
+            
+            createModel() {
+                this.log("🔧 NCF 모델 생성 중...");
+                
+                const userInput = tf.input({shape: [1], name: 'user', dtype: 'int32'});
+                const itemInput = tf.input({shape: [1], name: 'item', dtype: 'int32'});
+                
+                const userEmbedding = tf.layers.embedding({
+                    inputDim: this.numUsers,
+                    outputDim: this.embSize,
+                    name: 'user_embedding'
+                }).apply(userInput);
+                
+                const itemEmbedding = tf.layers.embedding({
+                    inputDim: this.numItems,
+                    outputDim: this.embSize,
+                    name: 'item_embedding'
+                }).apply(itemInput);
+                
+                const userFlat = tf.layers.flatten().apply(userEmbedding);
+                const itemFlat = tf.layers.flatten().apply(itemEmbedding);
+                
+                const concat = tf.layers.concatenate().apply([userFlat, itemFlat]);
+                
+                const dense1 = tf.layers.dense({
+                    units: 32,
+                    activation: 'relu',
+                    name: 'dense1'
+                }).apply(concat);
+                
+                const dropout1 = tf.layers.dropout({rate: 0.3}).apply(dense1);
+                
+                const dense2 = tf.layers.dense({
+                    units: 16,
+                    activation: 'relu',
+                    name: 'dense2'
+                }).apply(dropout1);
+                
+                const output = tf.layers.dense({
+                    units: 1,
+                    activation: 'sigmoid',
+                    name: 'output'
+                }).apply(dense2);
+                
+                this.model = tf.model({
+                    inputs: [userInput, itemInput],
+                    outputs: output
+                });
+                
+                this.model.compile({
+                    optimizer: tf.train.adam(parseFloat(document.getElementById('learningRate').value)),
+                    loss: 'binaryCrossentropy',
+                    metrics: ['accuracy']
+                });
+                
+                this.log(`✅ 모델 생성 완료: ${this.numUsers} 사용자, ${this.numItems} 아이템, ${this.embSize}D 임베딩`);
+                this.log(`📊 총 파라미터 수: ${this.model.countParams().toLocaleString()}`);
+            }
+            
+            processCSVData() {
+                this.log("📊 CSV 데이터 처리 중...");
+                
+                const data = this.csvData;
+                const numSamples = Math.min(data.length, parseInt(document.getElementById('numSamples').value));
+                
+                const shuffled = data.sort(() => 0.5 - Math.random()).slice(0, numSamples);
+                
+                const users = shuffled.map(row => row.user);
+                const items = shuffled.map(row => row.item);
+                const labels = shuffled.map(row => row.label);
+                
+                const splitIndex = Math.floor(numSamples * 0.8);
+                
+                const trainData = {
+                    users: tf.tensor2d(users.slice(0, splitIndex).map(u => [u]), [users.slice(0, splitIndex).length, 1], 'int32'),
+                    items: tf.tensor2d(items.slice(0, splitIndex).map(i => [i]), [items.slice(0, splitIndex).length, 1], 'int32'),
+                    labels: tf.tensor2d(labels.slice(0, splitIndex).map(l => [l]))
+                };
+                
+                const valData = {
+                    users: tf.tensor2d(users.slice(splitIndex).map(u => [u]), [users.slice(splitIndex).length, 1], 'int32'),
+                    items: tf.tensor2d(items.slice(splitIndex).map(i => [i]), [items.slice(splitIndex).length, 1], 'int32'),
+                    labels: tf.tensor2d(labels.slice(splitIndex).map(l => [l]))
+                };
+                
+                this.log(`✅ CSV 데이터 처리 완료: 학습 ${trainData.users.shape[0]}개, 검증 ${valData.users.shape[0]}개`);
+                
+                return { trainData, valData };
+            }
+            
+            generateSyntheticData() {
+                this.log("📊 학습 데이터 생성 중...");
+                
+                const numSamples = parseInt(document.getElementById('numSamples').value);
+                
+                const users = [];
+                const items = [];
+                const labels = [];
+                
+                for (let i = 0; i < numSamples; i++) {
+                    const user = Math.floor(Math.random() * this.numUsers);
+                    const item = Math.floor(Math.random() * this.numItems);
+                    
+                    const label = (user + item) % 2 === 0 ? 1 : 0;
+                    const finalLabel = Math.random() < 0.1 ? 1 - label : label;
+                    
+                    users.push(user);
+                    items.push(item);
+                    labels.push(finalLabel);
+                }
+                
+                const splitIndex = Math.floor(numSamples * 0.8);
+                
+                const trainData = {
+                    users: tf.tensor2d(users.slice(0, splitIndex).map(u => [u]), [users.slice(0, splitIndex).length, 1], 'int32'),
+                    items: tf.tensor2d(items.slice(0, splitIndex).map(i => [i]), [items.slice(0, splitIndex).length, 1], 'int32'),
+                    labels: tf.tensor2d(labels.slice(0, splitIndex).map(l => [l]))
+                };
+                
+                const valData = {
+                    users: tf.tensor2d(users.slice(splitIndex).map(u => [u]), [users.slice(splitIndex).length, 1], 'int32'),
+                    items: tf.tensor2d(items.slice(splitIndex).map(i => [i]), [items.slice(splitIndex).length, 1], 'int32'),
+                    labels: tf.tensor2d(labels.slice(splitIndex).map(l => [l]))
+                };
+                
+                this.log(`✅ 데이터 생성 완료: 학습 ${trainData.users.shape[0]}개, 검증 ${valData.users.shape[0]}개`);
+                
+                return { trainData, valData };
+            }
+            
+            generateData() {
+                const dataSource = document.getElementById('dataSource').value;
+                
+                if (dataSource === 'csv' && this.csvData) {
+                    this.log("📊 CSV 데이터 사용 중...");
+                    return this.processCSVData();
+                } else {
+                    this.log("📊 가상 데이터 생성 중...");
+                    return this.generateSyntheticData();
+                }
+            }
+            
+            async train() {
+                if (this.isTraining) return;
+                this.isTraining = true;
+                
+                try {
+                    this.updateStatus("🚀 학습 시작");
+                    this.log("🎯 NCF 모델 학습을 시작합니다...");
+                    
+                    this.createModel();
+                    const { trainData, valData } = this.generateData();
+                    const epochs = parseInt(document.getElementById('epochs').value);
+                    
+                    this.log(`📚 학습 데이터: ${trainData.users.shape[0]}개, 검증 데이터: ${valData.users.shape[0]}개`);
+                    this.log(`🔄 에포크 수: ${epochs}, 배치 크기: 32`);
+                    this.log("=".repeat(50));
+                    
+                    await this.model.fit(
+                        [trainData.users, trainData.items],
+                        trainData.labels,
+                        {
+                            epochs: epochs,
+                            batchSize: 32,
+                            validationData: [
+                                [valData.users, valData.items],
+                                valData.labels
+                            ],
+                            shuffle: true,
+                            verbose: 1,
+                            callbacks: {
+                                onEpochBegin: (epoch) => {
+                                    this.log(`\n🔄 Epoch ${epoch + 1}/${epochs} 시작...`);
+                                },
+                                onEpochEnd: (epoch, logs) => {
+                                    const progress = ((epoch + 1) / epochs) * 100;
+                                    this.updateProgress(progress);
+                                    this.updateMetrics(
+                                        epoch + 1,
+                                        logs.loss || 0,
+                                        logs.val_loss || 0,
+                                        logs.val_accuracy || 0
+                                    );
+                                    
+                                    const lossStr = (logs.loss || 0).toFixed(4);
+                                    const valLossStr = (logs.val_loss || 0).toFixed(4);
+                                    const valAccStr = (logs.val_accuracy || 0).toFixed(4);
+                                    
+                                    this.log(`✅ Epoch ${epoch + 1}/${epochs} 완료:`);
+                                    this.log(`   📉 학습 손실: ${lossStr}`);
+                                    this.log(`   📊 검증 손실: ${valLossStr}`);
+                                    this.log(`   🎯 검증 정확도: ${valAccStr}`);
+                                    
+                                    if (logs.val_loss > logs.loss * 2) {
+                                        this.log(`   ⚠️  과적합 위험 감지!`);
+                                    }
+                                    
+                                    this.log("-".repeat(40));
+                                },
+                                onBatchEnd: (batch, logs) => {
+                                    if (batch % 10 === 0 && batch > 0) {
+                                        this.log(`   배치 ${batch}: loss=${(logs.loss || 0).toFixed(4)}`);
+                                    }
+                                }
+                            }
+                        }
+                    );
+                    
+                    this.log("🧹 메모리 정리 중...");
+                    trainData.users.dispose();
+                    trainData.items.dispose();
+                    trainData.labels.dispose();
+                    valData.users.dispose();
+                    valData.items.dispose();
+                    valData.labels.dispose();
+                    
+                    this.updateStatus("✅ 학습 완료!");
+                    this.log("=".repeat(50));
+                    this.log("🎉 NCF 모델 학습이 성공적으로 완료되었습니다!");
+                    this.log("💡 이제 예측 및 추천 기능을 사용할 수 있습니다.");
+                    this.log("=".repeat(50));
+                    
+                    document.getElementById('predict').disabled = false;
+                    document.getElementById('analyzeWrongProblem').disabled = false;
+                    document.getElementById('hybridRecommend').disabled = false;
+                    
+                } catch (error) {
+                    this.log("💥 학습 중 치명적 에러 발생!");
+                    this.log(`❌ 에러 메시지: ${error.message}`);
+                    this.log(`📍 에러 위치: ${error.stack}`);
+                    this.updateStatus("❌ 학습 실패");
+                    console.error('Training error:', error);
+                } finally {
+                    this.isTraining = false;
+                    document.getElementById('startTraining').disabled = false;
+                    this.log("🔚 학습 프로세스 종료");
+                }
+            }
+            
+            async predict(userId, itemId) {
+                if (!this.model) {
+                    return "모델이 학습되지 않았습니다.";
+                }
+                
+                if (userId >= this.numUsers || itemId >= this.numItems) {
+                    return "사용자 ID 또는 아이템 ID가 범위를 벗어났습니다.";
+                }
+                
+                try {
+                    const userTensor = tf.tensor2d([[userId]], [1, 1], 'int32');
+                    const itemTensor = tf.tensor2d([[itemId]], [1, 1], 'int32');
+                    
+                    const prediction = this.model.predict([userTensor, itemTensor]);
+                    const score = await prediction.data();
+                    
+                    userTensor.dispose();
+                    itemTensor.dispose();
+                    prediction.dispose();
+                    
+                    const probability = score[0];
+                    const recommendation = probability > 0.5 ? "정답 예상" : "오답 예상";
+                    
+                    return `사용자 ${userId}가 문제 ${itemId}를 풀 때: ${recommendation} (정답 확률: ${(probability * 100).toFixed(1)}%)`;
+                    
+                } catch (error) {
+                    return `예측 중 에러: ${error.message}`;
+                }
+            }
+            
+            async analyzeWrongProblem(studentId, wrongProblemId) {
+                if (!this.model) {
+                    return "모델이 학습되지 않았습니다.";
+                }
+                
+                this.log(`🔍 분석 시작: 학생 ${studentId}가 문제 ${wrongProblemId}를 틀림`);
+                
+                try {
+                    this.log("1️⃣ 일반 추천 분석 중...");
+                    const generalRecs = await this.getDetailedRecommendations(studentId, 10);
+                    
+                    this.log("2️⃣ 오답 위험 문제 분석 중...");
+                    const riskProblems = await this.getRiskProblems(studentId, 10);
+                    
+                    this.log("3️⃣ 관련 문제 분석 중...");
+                    const relatedRecs = await this.getRelatedRecommendations(studentId, wrongProblemId, 5);
+                    
+                    let result = `📊 <strong>학생 ${studentId} 문제 ${wrongProblemId} 틀림 분석</strong><br><br>`;
+                    
+                    result += `<div style="background: rgba(0,255,0,0.1); padding: 10px; border-radius: 5px; margin: 10px 0;">`;
+                    result += `<strong>✅ 추천 문제 (정답 가능성 높음)</strong><br>`;
+                    generalRecs.slice(0, 5).forEach((rec, i) => {
+                        result += `${i+1}. 문제 ${rec.itemId} - ${(rec.score * 100).toFixed(1)}% 🎯<br>`;
+                    });
+                    result += `</div>`;
+                    
+                    result += `<div style="background: rgba(255,0,0,0.1); padding: 10px; border-radius: 5px; margin: 10px 0;">`;
+                    result += `<strong>⚠️ 주의 문제 (오답 위험 높음)</strong><br>`;
+                    riskProblems.slice(0, 5).forEach((rec, i) => {
+                        result += `${i+1}. 문제 ${rec.itemId} - ${(rec.score * 100).toFixed(1)}% ⚠️<br>`;
+                    });
+                    result += `</div>`;
+                    
+                    result += `<div style="background: rgba(0,0,255,0.1); padding: 10px; border-radius: 5px; margin: 10px 0;">`;
+                    result += `<strong>🔗 관련 문제 (틀린 문제 주변)</strong><br>`;
+                    relatedRecs.forEach((rec, i) => {
+                        result += `${i+1}. 문제 ${rec.itemId} - ${(rec.score * 100).toFixed(1)}% 🔍<br>`;
+                    });
+                    result += `</div>`;
+                    
+                    return result;
+                    
+                } catch (error) {
+                    return `분석 중 에러: ${error.message}`;
+                }
+            }
+            
+            async getDetailedRecommendations(userId, topK) {
+                const scores = [];
+                const startItem = Math.max(0, Math.floor(this.numItems * 0.3));
+                const endItem = Math.min(this.numItems, startItem + 200);
+                
+                for (let itemId = startItem; itemId < endItem; itemId++) {
+                    const userTensor = tf.tensor2d([[userId]], [1, 1], 'int32');
+                    const itemTensor = tf.tensor2d([[itemId]], [1, 1], 'int32');
+                    
+                    const prediction = this.model.predict([userTensor, itemTensor]);
+                    const score = await prediction.data();
+                    
+                    scores.push({ itemId: itemId, score: score[0] });
+                    
+                    userTensor.dispose();
+                    itemTensor.dispose();
+                    prediction.dispose();
+                }
+                
+                return scores.sort((a, b) => b.score - a.score).slice(0, topK);
+            }
+            
+            async getRiskProblems(userId, topK) {
+                const scores = [];
+                const startItem = Math.max(0, Math.floor(this.numItems * 0.3));
+                const endItem = Math.min(this.numItems, startItem + 200);
+                
+                for (let itemId = startItem; itemId < endItem; itemId++) {
+                    const userTensor = tf.tensor2d([[userId]], [1, 1], 'int32');
+                    const itemTensor = tf.tensor2d([[itemId]], [1, 1], 'int32');
+                    
+                    const prediction = this.model.predict([userTensor, itemTensor]);
+                    const score = await prediction.data();
+                    
+                    scores.push({ itemId: itemId, score: score[0] });
+                    
+                    userTensor.dispose();
+                    itemTensor.dispose();
+                    prediction.dispose();
+                }
+                
+                return scores.sort((a, b) => a.score - b.score).slice(0, topK);
+            }
+            
+            async getRelatedRecommendations(userId, wrongProblemId, topK) {
+                const scores = [];
+                const range = 100;
+                const startItem = Math.max(0, wrongProblemId - range);
+                const endItem = Math.min(this.numItems, wrongProblemId + range);
+                
+                for (let itemId = startItem; itemId < endItem; itemId++) {
+                    if (itemId === wrongProblemId) continue;
+                    
+                    const userTensor = tf.tensor2d([[userId]], [1, 1], 'int32');
+                    const itemTensor = tf.tensor2d([[itemId]], [1, 1], 'int32');
+                    
+                    const prediction = this.model.predict([userTensor, itemTensor]);
+                    const score = await prediction.data();
+                    
+                    scores.push({ itemId: itemId, score: score[0] });
+                    
+                    userTensor.dispose();
+                    itemTensor.dispose();
+                    prediction.dispose();
+                }
+                
+                return scores.sort((a, b) => b.score - a.score).slice(0, topK);
+            }
+        }
+        
+        let ncfModel = null;
+        
+        function toggleDataSource() {
+            const dataSource = document.getElementById('dataSource').value;
+            const csvUpload = document.getElementById('csvUpload');
+            
+            if (dataSource === 'csv') {
+                csvUpload.style.display = 'block';
+            } else {
+                csvUpload.style.display = 'none';
+            }
+        }
+        
+        function handleCSVUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            document.getElementById('csvStatus').innerHTML = '📊 CSV 파일 읽는 중...';
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const csv = e.target.result;
+                    const lines = csv.split('\n').filter(line => line.trim());
+                    
+                    const data = [];
+                    const userSet = new Set();
+                    const itemSet = new Set();
+                    
+                    lines.forEach((line) => {
+                        const parts = line.split(',').map(s => s.trim());
+                        
+                        if (parts.length >= 3) {
+                            const studentId = parts[0];
+                            const problemId = parts[1];
+                            const label = parts[2];
+                            
+                            if (!isNaN(studentId) && !isNaN(problemId) && !isNaN(label)) {
+                                userSet.add(studentId);
+                                itemSet.add(problemId);
+                                
+                                data.push({
+                                    originalUser: studentId,
+                                    originalItem: problemId,
+                                    label: parseFloat(label)
+                                });
+                            }
+                        }
+                    });
+                    
+                    if (data.length === 0) {
+                        throw new Error('유효한 데이터가 없습니다.');
+                    }
+                    
+                    const users = Array.from(userSet).sort((a, b) => a - b);
+                    const items = Array.from(itemSet).sort((a, b) => a - b);
+                    
+                    const userMap = {};
+                    const itemMap = {};
+                    
+                    users.forEach((user, idx) => userMap[user] = idx);
+                    items.forEach((item, idx) => itemMap[item] = idx);
+                    
+                    const processedData = data.map(row => ({
+                        user: userMap[row.originalUser],
+                        item: itemMap[row.originalItem],
+                        label: Math.max(0, Math.min(1, row.label))
+                    }));
+                    
+                    document.getElementById('numUsers').value = users.length;
+                    document.getElementById('numItems').value = items.length;
+                    document.getElementById('numSamples').value = Math.min(processedData.length, 5000);
+                    
+                    const testUserEl = document.getElementById('testUser');
+                    const testItemEl = document.getElementById('testItem');
+                    const wrongStudentEl = document.getElementById('wrongStudent');
+                    
+                    if (testUserEl) testUserEl.max = users.length - 1;
+                    if (testItemEl) testItemEl.max = items.length - 1;
+                    if (wrongStudentEl) wrongStudentEl.max = users.length - 1;
+                    
+                    if (ncfModel) {
+                        ncfModel.csvData = processedData;
+                    }
+                    
+                    const labelCounts = processedData.reduce((acc, row) => {
+                        acc[row.label] = (acc[row.label] || 0) + 1;
+                        return acc;
+                    }, {});
+                    
+                    document.getElementById('csvStatus').innerHTML = 
+                        `✅ CSV 로드 완료!<br>
+                        📊 ${processedData.length.toLocaleString()}개 레코드<br>
+                        👥 ${users.length}명 사용자<br>
+                        📚 ${items.length}개 문제<br>
+                        ✅ 정답: ${(labelCounts[1] || 0).toLocaleString()}개<br>
+                        ❌ 오답: ${(labelCounts[0] || 0).toLocaleString()}개<br>
+                        📈 정답률: ${((labelCounts[1] || 0) / processedData.length * 100).toFixed(1)}%`;
+                    
+                } catch (error) {
+                    document.getElementById('csvStatus').innerHTML = 
+                        `❌ CSV 파싱 에러: ${error.message}`;
+                    console.error('CSV parsing error:', error);
+                }
+            };
+            
+            reader.readAsText(file);
+        }
+        
+        document.getElementById('startTraining').addEventListener('click', async () => {
+            console.log('🔥 학습 버튼 클릭됨!');
+            
+            const numUsers = parseInt(document.getElementById('numUsers').value);
+            const numItems = parseInt(document.getElementById('numItems').value);
+            const embSize = parseInt(document.getElementById('embSize').value);
+            
+            console.log(`설정값 - 사용자: ${numUsers}, 아이템: ${numItems}, 임베딩: ${embSize}`);
+            
+            const testUserEl = document.getElementById('testUser');
+            const testItemEl = document.getElementById('testItem');
+            const wrongStudentEl = document.getElementById('wrongStudent');
+            
+            if (testUserEl) testUserEl.max = numUsers - 1;
+            if (testItemEl) testItemEl.max = numItems - 1;
+            if (wrongStudentEl) wrongStudentEl.max = numUsers - 1;
+            
+            const logElement = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            logElement.textContent += `[${timestamp}] 🔥 학습 버튼이 클릭되었습니다!\n`;
+            logElement.scrollTop = logElement.scrollHeight;
+            
+            try {
+                ncfModel = new NCFModel(numUsers, numItems, embSize);
+                
+                const dataSource = document.getElementById('dataSource').value;
+                if (dataSource === 'csv') {
+                    const csvFile = document.getElementById('csvFile').files[0];
+                    if (!csvFile) {
+                        alert('CSV 파일을 먼저 업로드해주세요!');
+                        return;
+                    }
+                    console.log('CSV 데이터 사용 예정');
+                } else {
+                    console.log('가상 데이터 사용 예정');
+                }
+                
+                document.getElementById('startTraining').disabled = true;
+                document.getElementById('predict').disabled = true;
+                document.getElementById('analyzeWrongProblem').disabled = true;
+                document.getElementById('hybridRecommend').disabled = true;
+                
+                console.log('모델 학습 시작...');
+                await ncfModel.train();
+                console.log('모델 학습 완료!');
+                
+            } catch (error) {
+                console.error('학습 버튼 처리 중 에러:', error);
+                const logElement = document.getElementById('log');
+                const timestamp = new Date().toLocaleTimeString();
+                logElement.textContent += `[${timestamp}] ❌ 버튼 처리 에러: ${error.message}\n`;
+                logElement.scrollTop = logElement.scrollHeight;
+                
+                document.getElementById('startTraining').disabled = false;
+            }
+        });
+        
+        document.getElementById('predict').addEventListener('click', async () => {
+            console.log('🔮 예측 버튼 클릭됨!');
+            if (!ncfModel) {
+                alert('먼저 모델을 학습시켜주세요!');
+                return;
+            }
+            
+            const userId = parseInt(document.getElementById('testUser').value);
+            const itemId = parseInt(document.getElementById('testItem').value);
+            
+            console.log(`예측 요청: 사용자 ${userId}, 아이템 ${itemId}`);
+            
+            try {
+                const result = await ncfModel.predict(userId, itemId);
+                document.getElementById('predictionResult').textContent = result;
+                console.log('예측 완료:', result);
+            } catch (error) {
+                console.error('예측 중 에러:', error);
+                document.getElementById('predictionResult').textContent = `예측 에러: ${error.message}`;
+            }
+        });
+        
+        document.getElementById('analyzeWrongProblem').addEventListener('click', async () => {
+            if (!ncfModel) {
+                alert('먼저 모델을 학습시켜주세요!');
+                return;
+            }
+            
+            const studentId = parseInt(document.getElementById('wrongStudent').value);
+            const wrongProblemId = parseInt(document.getElementById('wrongProblem').value);
+            
+            document.getElementById('analysisResult').innerHTML = '🔍 분석 중...';
+            
+            const result = await ncfModel.analyzeWrongProblem(studentId, wrongProblemId);
+            document.getElementById('analysisResult').innerHTML = result;
+        });
+        
+        document.getElementById('hybridRecommend').addEventListener('click', async () => {
+            if (!ncfModel) {
+                alert('먼저 모델을 학습시켜주세요!');
+                return;
+            }
+            
+            const ncfWeight = parseFloat(document.getElementById('ncfWeight').value);
+            const freqWeight = 1.0 - ncfWeight;
+            document.getElementById('freqWeight').value = freqWeight.toFixed(1);
+            
+            const studentId = parseInt(document.getElementById('wrongStudent').value);
+            
+            document.getElementById('analysisResult').innerHTML = '🚀 하이브리드 추천 계산 중...';
+            
+            const ncfRecs = await ncfModel.getDetailedRecommendations(studentId, 10);
+            
+            // 올바른 하이브리드 계산: 오답률을 그대로 사용
+            const hybridResults = ncfRecs.map(rec => {
+                const mockFreqWrongRate = Math.random() * 0.5 + 0.3; // 0.3-0.8 사이 오답률
+                const hybridScore = ncfWeight * rec.score + freqWeight * mockFreqWrongRate;
+                return {
+                    itemId: rec.itemId,
+                    ncfScore: rec.score,
+                    freqWrongRate: mockFreqWrongRate,
+                    hybridScore: hybridScore
+                };
+            });
+            
+            hybridResults.sort((a, b) => b.hybridScore - a.hybridScore);
+            
+            let result = `🎯 <strong>하이브리드 추천 결과 (NCF:${ncfWeight} + 빈도:${freqWeight})</strong><br><br>`;
+            
+            result += `<div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 5px; margin-bottom: 15px;">`;
+            result += `📊 <strong>올바른 점수 설명:</strong><br>`;
+            result += `• <strong>NCF 정답률</strong>: 이 학생이 해당 문제를 맞힐 확률<br>`;
+            result += `• <strong>빈도 오답률</strong>: 같은 약점을 가진 학생들의 오답률<br>`;
+            result += `• <strong>종합 점수</strong>: ${(ncfWeight*100).toFixed(0)}% × NCF정답률 + ${(freqWeight*100).toFixed(0)}% × 빈도오답률<br>`;
+            result += `• <strong>핵심</strong>: 오답률이 높을수록 더 중요한 복습 문제로 판단<br>`;
+            result += `</div>`;
+            
+            result += `<div style="background: rgba(128,0,128,0.1); padding: 10px; border-radius: 5px;">`;
+            hybridResults.slice(0, 8).forEach((rec, i) => {
+                const confidenceIcon = rec.hybridScore > 0.9 ? "🔥" : rec.hybridScore > 0.8 ? "⭐" : rec.hybridScore > 0.7 ? "👍" : "🤔";
+                result += `${i+1}. 문제 ${rec.itemId} ${confidenceIcon}<br>`;
+                result += `&nbsp;&nbsp;&nbsp;📊 NCF 정답률: ${(rec.ncfScore * 100).toFixed(1)}% | `;
+                result += `📈 빈도 오답률: ${(rec.freqWrongRate * 100).toFixed(1)}% | `;
+                result += `🎯 종합: ${(rec.hybridScore * 100).toFixed(1)}%<br><br>`;
+            });
+            result += `</div>`;
+            
+            result += `<br>💡 <em>빈도 점수는 시뮬레이션 값입니다. 실제로는 SQL 쿼리 결과와 결합해야 합니다.</em>`;
+            
+            document.getElementById('analysisResult').innerHTML = result;
+        });
+        
+        document.getElementById('ncfWeight').addEventListener('input', (e) => {
+            const ncfWeight = parseFloat(e.target.value);
+            const freqWeight = 1.0 - ncfWeight;
+            document.getElementById('freqWeight').value = freqWeight.toFixed(1);
+        });
+        
+        console.log('🚀 NCF 데모 페이지 로드됨');
+        console.log('TensorFlow.js 버전:', tf.version);
+        
+        const startBtn = document.getElementById('startTraining');
+        if (startBtn) {
+            console.log('✅ 학습 시작 버튼 발견');
+        } else {
+            console.error('❌ 학습 시작 버튼을 찾을 수 없음');
+        }
+        
+        document.getElementById('predict').disabled = true;
+        document.getElementById('analyzeWrongProblem').disabled = true;
+        document.getElementById('hybridRecommend').disabled = true;
+        
+        const logElement = document.getElementById('log');
+        const timestamp = new Date().toLocaleTimeString();
+        logElement.textContent += `[${timestamp}] 🚀 NCF 데모 준비 완료 (TF.js ${tf.version.tfjs})\n`;
+        logElement.textContent += `[${timestamp}] 💡 올바른 하이브리드 로직이 적용되었습니다\n`;
+        logElement.scrollTop = logElement.scrollHeight;
+    </script>
+</body>
+</html>
