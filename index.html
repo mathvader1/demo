@@ -329,8 +329,8 @@
                 console.log(`✅ 실제 학습 데이터 로딩 완료: ${trainingArray.length}개`);
                 
                 return trainingArray.slice(0, limit).map(item => ({
-                    user: item.student_id % 50,
-                    item: item.problem_id % 100,
+                    user: item.student_id % 200,
+                    item: item.problem_id,
                     label: item.label
                 }));
             } catch (error) {
