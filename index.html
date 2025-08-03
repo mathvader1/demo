@@ -307,19 +307,16 @@
         // 실제 API 데이터 로딩 함수들
         async function loadRealTrainingData(limit = 5000) {
             try {
-                console.log(`🔄 실제 학습 데이터 로딩 중... (${limit}개)`);
+                console.log(`🔄 실제 학습 데이터 로딩 중... (정적 JSON 파일)`);
                 
-                const response = await fetch(`${API_BASE}/training-data?limit=${limit}`);
-                if (!response.ok) {
-                    throw new Error(`API 오류: ${response.status}`);
-                }
-                
+                const response = await fetch('./training_data.json');
                 const data = await response.json();
+                
                 console.log(`✅ 실제 학습 데이터 로딩 완료: ${data.length}개`);
                 
-                return data.map(item => ({
-                    user: item.student_id % 50,  // 사용자 ID 범위 조정
-                    item: item.problem_id % 100, // 아이템 ID 범위 조정  
+                return data.slice(0, limit).map(item => ({
+                    user: item.student_id % 50,
+                    item: item.problem_id % 100,
                     label: item.label
                 }));
             } catch (error) {
@@ -328,19 +325,16 @@
             }
         }
 
-        async function loadRealCandidates(problemId = 34119, limit = 200) {
+        async function loadRealCandidates(problemId = 89978, limit = 200) {
             try {
-                console.log(`🔄 실제 후보군 로딩 중... (문제 ${problemId})`);
+                console.log(`🔄 실제 후보군 로딩 중... (정적 JSON 파일)`);
                 
-                const response = await fetch(`${API_BASE}/candidates/${problemId}?limit=${limit}`);
-                if (!response.ok) {
-                    throw new Error(`API 오류: ${response.status}`);
-                }
-                
+                const response = await fetch('./candidates_89978.json');
                 const data = await response.json();
+                
                 console.log(`✅ 실제 후보군 로딩 완료: ${data.length}개`);
                 
-                return data.map(item => ({
+                return data.slice(0, limit).map(item => ({
                     problem_id: item.problem_id,
                     frequency_score: Math.min(item.frequency_score / 100.0, 1.0),
                     wrong_count: item.wrong_count,
