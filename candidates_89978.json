@@ -1,0 +1,1202 @@
+[
+  {
+    "problem_id": 17342,
+    "wrong_count": 36,
+    "student_count": 3,
+    "frequency_score": "1200.00"
+  },
+  {
+    "problem_id": 92900,
+    "wrong_count": 23,
+    "student_count": 3,
+    "frequency_score": "766.67"
+  },
+  {
+    "problem_id": 14152,
+    "wrong_count": 29,
+    "student_count": 4,
+    "frequency_score": "725.00"
+  },
+  {
+    "problem_id": 19475,
+    "wrong_count": 20,
+    "student_count": 3,
+    "frequency_score": "666.67"
+  },
+  {
+    "problem_id": 19474,
+    "wrong_count": 20,
+    "student_count": 3,
+    "frequency_score": "666.67"
+  },
+  {
+    "problem_id": 14156,
+    "wrong_count": 25,
+    "student_count": 4,
+    "frequency_score": "625.00"
+  },
+  {
+    "problem_id": 14153,
+    "wrong_count": 25,
+    "student_count": 4,
+    "frequency_score": "625.00"
+  },
+  {
+    "problem_id": 63483,
+    "wrong_count": 18,
+    "student_count": 3,
+    "frequency_score": "600.00"
+  },
+  {
+    "problem_id": 17438,
+    "wrong_count": 18,
+    "student_count": 3,
+    "frequency_score": "600.00"
+  },
+  {
+    "problem_id": 98008,
+    "wrong_count": 18,
+    "student_count": 3,
+    "frequency_score": "600.00"
+  },
+  {
+    "problem_id": 19705,
+    "wrong_count": 17,
+    "student_count": 3,
+    "frequency_score": "566.67"
+  },
+  {
+    "problem_id": 92075,
+    "wrong_count": 17,
+    "student_count": 3,
+    "frequency_score": "566.67"
+  },
+  {
+    "problem_id": 91391,
+    "wrong_count": 17,
+    "student_count": 3,
+    "frequency_score": "566.67"
+  },
+  {
+    "problem_id": 84687,
+    "wrong_count": 17,
+    "student_count": 3,
+    "frequency_score": "566.67"
+  },
+  {
+    "problem_id": 13749,
+    "wrong_count": 17,
+    "student_count": 3,
+    "frequency_score": "566.67"
+  },
+  {
+    "problem_id": 91399,
+    "wrong_count": 17,
+    "student_count": 3,
+    "frequency_score": "566.67"
+  },
+  {
+    "problem_id": 13982,
+    "wrong_count": 45,
+    "student_count": 8,
+    "frequency_score": "562.50"
+  },
+  {
+    "problem_id": 14049,
+    "wrong_count": 28,
+    "student_count": 5,
+    "frequency_score": "560.00"
+  },
+  {
+    "problem_id": 14292,
+    "wrong_count": 22,
+    "student_count": 4,
+    "frequency_score": "550.00"
+  },
+  {
+    "problem_id": 84594,
+    "wrong_count": 38,
+    "student_count": 7,
+    "frequency_score": "542.86"
+  },
+  {
+    "problem_id": 13565,
+    "wrong_count": 38,
+    "student_count": 7,
+    "frequency_score": "542.86"
+  },
+  {
+    "problem_id": 17434,
+    "wrong_count": 16,
+    "student_count": 3,
+    "frequency_score": "533.33"
+  },
+  {
+    "problem_id": 19471,
+    "wrong_count": 16,
+    "student_count": 3,
+    "frequency_score": "533.33"
+  },
+  {
+    "problem_id": 13981,
+    "wrong_count": 40,
+    "student_count": 8,
+    "frequency_score": "500.00"
+  },
+  {
+    "problem_id": 64672,
+    "wrong_count": 35,
+    "student_count": 7,
+    "frequency_score": "500.00"
+  },
+  {
+    "problem_id": 14055,
+    "wrong_count": 25,
+    "student_count": 5,
+    "frequency_score": "500.00"
+  },
+  {
+    "problem_id": 91906,
+    "wrong_count": 25,
+    "student_count": 5,
+    "frequency_score": "500.00"
+  },
+  {
+    "problem_id": 17092,
+    "wrong_count": 20,
+    "student_count": 4,
+    "frequency_score": "500.00"
+  },
+  {
+    "problem_id": 17085,
+    "wrong_count": 15,
+    "student_count": 3,
+    "frequency_score": "500.00"
+  },
+  {
+    "problem_id": 19403,
+    "wrong_count": 15,
+    "student_count": 3,
+    "frequency_score": "500.00"
+  },
+  {
+    "problem_id": 89177,
+    "wrong_count": 78,
+    "student_count": 16,
+    "frequency_score": "487.50"
+  },
+  {
+    "problem_id": 13883,
+    "wrong_count": 34,
+    "student_count": 7,
+    "frequency_score": "485.71"
+  },
+  {
+    "problem_id": 13766,
+    "wrong_count": 34,
+    "student_count": 7,
+    "frequency_score": "485.71"
+  },
+  {
+    "problem_id": 14149,
+    "wrong_count": 24,
+    "student_count": 5,
+    "frequency_score": "480.00"
+  },
+  {
+    "problem_id": 19326,
+    "wrong_count": 14,
+    "student_count": 3,
+    "frequency_score": "466.67"
+  },
+  {
+    "problem_id": 19543,
+    "wrong_count": 14,
+    "student_count": 3,
+    "frequency_score": "466.67"
+  },
+  {
+    "problem_id": 91380,
+    "wrong_count": 14,
+    "student_count": 3,
+    "frequency_score": "466.67"
+  },
+  {
+    "problem_id": 22317,
+    "wrong_count": 14,
+    "student_count": 3,
+    "frequency_score": "466.67"
+  },
+  {
+    "problem_id": 124152,
+    "wrong_count": 14,
+    "student_count": 3,
+    "frequency_score": "466.67"
+  },
+  {
+    "problem_id": 63176,
+    "wrong_count": 14,
+    "student_count": 3,
+    "frequency_score": "466.67"
+  },
+  {
+    "problem_id": 19463,
+    "wrong_count": 14,
+    "student_count": 3,
+    "frequency_score": "466.67"
+  },
+  {
+    "problem_id": 19795,
+    "wrong_count": 14,
+    "student_count": 3,
+    "frequency_score": "466.67"
+  },
+  {
+    "problem_id": 19325,
+    "wrong_count": 14,
+    "student_count": 3,
+    "frequency_score": "466.67"
+  },
+  {
+    "problem_id": 14053,
+    "wrong_count": 27,
+    "student_count": 6,
+    "frequency_score": "450.00"
+  },
+  {
+    "problem_id": 13974,
+    "wrong_count": 27,
+    "student_count": 6,
+    "frequency_score": "450.00"
+  },
+  {
+    "problem_id": 85233,
+    "wrong_count": 18,
+    "student_count": 4,
+    "frequency_score": "450.00"
+  },
+  {
+    "problem_id": 74338,
+    "wrong_count": 18,
+    "student_count": 4,
+    "frequency_score": "450.00"
+  },
+  {
+    "problem_id": 94414,
+    "wrong_count": 26,
+    "student_count": 6,
+    "frequency_score": "433.33"
+  },
+  {
+    "problem_id": 74347,
+    "wrong_count": 13,
+    "student_count": 3,
+    "frequency_score": "433.33"
+  },
+  {
+    "problem_id": 24261,
+    "wrong_count": 13,
+    "student_count": 3,
+    "frequency_score": "433.33"
+  },
+  {
+    "problem_id": 19404,
+    "wrong_count": 13,
+    "student_count": 3,
+    "frequency_score": "433.33"
+  },
+  {
+    "problem_id": 19470,
+    "wrong_count": 13,
+    "student_count": 3,
+    "frequency_score": "433.33"
+  },
+  {
+    "problem_id": 14136,
+    "wrong_count": 13,
+    "student_count": 3,
+    "frequency_score": "433.33"
+  },
+  {
+    "problem_id": 83000,
+    "wrong_count": 25,
+    "student_count": 6,
+    "frequency_score": "416.67"
+  },
+  {
+    "problem_id": 13688,
+    "wrong_count": 25,
+    "student_count": 6,
+    "frequency_score": "416.67"
+  },
+  {
+    "problem_id": 14056,
+    "wrong_count": 29,
+    "student_count": 7,
+    "frequency_score": "414.29"
+  },
+  {
+    "problem_id": 88869,
+    "wrong_count": 37,
+    "student_count": 9,
+    "frequency_score": "411.11"
+  },
+  {
+    "problem_id": 89712,
+    "wrong_count": 41,
+    "student_count": 10,
+    "frequency_score": "410.00"
+  },
+  {
+    "problem_id": 89395,
+    "wrong_count": 45,
+    "student_count": 11,
+    "frequency_score": "409.09"
+  },
+  {
+    "problem_id": 89368,
+    "wrong_count": 136,
+    "student_count": 34,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 89583,
+    "wrong_count": 128,
+    "student_count": 32,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 13768,
+    "wrong_count": 28,
+    "student_count": 7,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 89449,
+    "wrong_count": 24,
+    "student_count": 6,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 92026,
+    "wrong_count": 24,
+    "student_count": 6,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 13579,
+    "wrong_count": 24,
+    "student_count": 6,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 88778,
+    "wrong_count": 20,
+    "student_count": 5,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 89989,
+    "wrong_count": 16,
+    "student_count": 4,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 14211,
+    "wrong_count": 12,
+    "student_count": 3,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 94864,
+    "wrong_count": 12,
+    "student_count": 3,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 17021,
+    "wrong_count": 12,
+    "student_count": 3,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 22146,
+    "wrong_count": 12,
+    "student_count": 3,
+    "frequency_score": "400.00"
+  },
+  {
+    "problem_id": 89577,
+    "wrong_count": 139,
+    "student_count": 35,
+    "frequency_score": "397.14"
+  },
+  {
+    "problem_id": 89880,
+    "wrong_count": 201,
+    "student_count": 51,
+    "frequency_score": "394.12"
+  },
+  {
+    "problem_id": 89579,
+    "wrong_count": 136,
+    "student_count": 35,
+    "frequency_score": "388.57"
+  },
+  {
+    "problem_id": 92121,
+    "wrong_count": 31,
+    "student_count": 8,
+    "frequency_score": "387.50"
+  },
+  {
+    "problem_id": 13977,
+    "wrong_count": 27,
+    "student_count": 7,
+    "frequency_score": "385.71"
+  },
+  {
+    "problem_id": 69276,
+    "wrong_count": 23,
+    "student_count": 6,
+    "frequency_score": "383.33"
+  },
+  {
+    "problem_id": 89970,
+    "wrong_count": 130,
+    "student_count": 34,
+    "frequency_score": "382.35"
+  },
+  {
+    "problem_id": 88871,
+    "wrong_count": 42,
+    "student_count": 11,
+    "frequency_score": "381.82"
+  },
+  {
+    "problem_id": 89569,
+    "wrong_count": 76,
+    "student_count": 20,
+    "frequency_score": "380.00"
+  },
+  {
+    "problem_id": 89992,
+    "wrong_count": 83,
+    "student_count": 22,
+    "frequency_score": "377.27"
+  },
+  {
+    "problem_id": 88980,
+    "wrong_count": 49,
+    "student_count": 13,
+    "frequency_score": "376.92"
+  },
+  {
+    "problem_id": 90190,
+    "wrong_count": 49,
+    "student_count": 13,
+    "frequency_score": "376.92"
+  },
+  {
+    "problem_id": 14051,
+    "wrong_count": 15,
+    "student_count": 4,
+    "frequency_score": "375.00"
+  },
+  {
+    "problem_id": 69187,
+    "wrong_count": 15,
+    "student_count": 4,
+    "frequency_score": "375.00"
+  },
+  {
+    "problem_id": 89274,
+    "wrong_count": 86,
+    "student_count": 23,
+    "frequency_score": "373.91"
+  },
+  {
+    "problem_id": 88970,
+    "wrong_count": 41,
+    "student_count": 11,
+    "frequency_score": "372.73"
+  },
+  {
+    "problem_id": 89476,
+    "wrong_count": 77,
+    "student_count": 21,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 62984,
+    "wrong_count": 33,
+    "student_count": 9,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 14146,
+    "wrong_count": 22,
+    "student_count": 6,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 13874,
+    "wrong_count": 22,
+    "student_count": 6,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 89174,
+    "wrong_count": 22,
+    "student_count": 6,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 74030,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 22307,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 13757,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 19400,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 16922,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 82794,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 17086,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 17328,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 84460,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 92895,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 88993,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 92899,
+    "wrong_count": 11,
+    "student_count": 3,
+    "frequency_score": "366.67"
+  },
+  {
+    "problem_id": 91805,
+    "wrong_count": 51,
+    "student_count": 14,
+    "frequency_score": "364.29"
+  },
+  {
+    "problem_id": 91415,
+    "wrong_count": 36,
+    "student_count": 10,
+    "frequency_score": "360.00"
+  },
+  {
+    "problem_id": 69357,
+    "wrong_count": 36,
+    "student_count": 10,
+    "frequency_score": "360.00"
+  },
+  {
+    "problem_id": 13678,
+    "wrong_count": 18,
+    "student_count": 5,
+    "frequency_score": "360.00"
+  },
+  {
+    "problem_id": 63158,
+    "wrong_count": 18,
+    "student_count": 5,
+    "frequency_score": "360.00"
+  },
+  {
+    "problem_id": 91372,
+    "wrong_count": 18,
+    "student_count": 5,
+    "frequency_score": "360.00"
+  },
+  {
+    "problem_id": 88975,
+    "wrong_count": 18,
+    "student_count": 5,
+    "frequency_score": "360.00"
+  },
+  {
+    "problem_id": 62961,
+    "wrong_count": 18,
+    "student_count": 5,
+    "frequency_score": "360.00"
+  },
+  {
+    "problem_id": 13676,
+    "wrong_count": 18,
+    "student_count": 5,
+    "frequency_score": "360.00"
+  },
+  {
+    "problem_id": 88985,
+    "wrong_count": 25,
+    "student_count": 7,
+    "frequency_score": "357.14"
+  },
+  {
+    "problem_id": 13976,
+    "wrong_count": 25,
+    "student_count": 7,
+    "frequency_score": "357.14"
+  },
+  {
+    "problem_id": 13767,
+    "wrong_count": 25,
+    "student_count": 7,
+    "frequency_score": "357.14"
+  },
+  {
+    "problem_id": 89381,
+    "wrong_count": 98,
+    "student_count": 28,
+    "frequency_score": "350.00"
+  },
+  {
+    "problem_id": 92116,
+    "wrong_count": 49,
+    "student_count": 14,
+    "frequency_score": "350.00"
+  },
+  {
+    "problem_id": 64670,
+    "wrong_count": 21,
+    "student_count": 6,
+    "frequency_score": "350.00"
+  },
+  {
+    "problem_id": 13682,
+    "wrong_count": 14,
+    "student_count": 4,
+    "frequency_score": "350.00"
+  },
+  {
+    "problem_id": 92131,
+    "wrong_count": 14,
+    "student_count": 4,
+    "frequency_score": "350.00"
+  },
+  {
+    "problem_id": 89361,
+    "wrong_count": 14,
+    "student_count": 4,
+    "frequency_score": "350.00"
+  },
+  {
+    "problem_id": 89384,
+    "wrong_count": 104,
+    "student_count": 30,
+    "frequency_score": "346.67"
+  },
+  {
+    "problem_id": 89573,
+    "wrong_count": 124,
+    "student_count": 36,
+    "frequency_score": "344.44"
+  },
+  {
+    "problem_id": 65089,
+    "wrong_count": 24,
+    "student_count": 7,
+    "frequency_score": "342.86"
+  },
+  {
+    "problem_id": 94216,
+    "wrong_count": 41,
+    "student_count": 12,
+    "frequency_score": "341.67"
+  },
+  {
+    "problem_id": 89373,
+    "wrong_count": 133,
+    "student_count": 39,
+    "frequency_score": "341.03"
+  },
+  {
+    "problem_id": 69350,
+    "wrong_count": 34,
+    "student_count": 10,
+    "frequency_score": "340.00"
+  },
+  {
+    "problem_id": 63119,
+    "wrong_count": 17,
+    "student_count": 5,
+    "frequency_score": "340.00"
+  },
+  {
+    "problem_id": 62947,
+    "wrong_count": 17,
+    "student_count": 5,
+    "frequency_score": "340.00"
+  },
+  {
+    "problem_id": 69501,
+    "wrong_count": 17,
+    "student_count": 5,
+    "frequency_score": "340.00"
+  },
+  {
+    "problem_id": 64756,
+    "wrong_count": 17,
+    "student_count": 5,
+    "frequency_score": "340.00"
+  },
+  {
+    "problem_id": 69340,
+    "wrong_count": 17,
+    "student_count": 5,
+    "frequency_score": "340.00"
+  },
+  {
+    "problem_id": 90284,
+    "wrong_count": 115,
+    "student_count": 34,
+    "frequency_score": "338.24"
+  },
+  {
+    "problem_id": 89685,
+    "wrong_count": 64,
+    "student_count": 19,
+    "frequency_score": "336.84"
+  },
+  {
+    "problem_id": 88679,
+    "wrong_count": 37,
+    "student_count": 11,
+    "frequency_score": "336.36"
+  },
+  {
+    "problem_id": 90173,
+    "wrong_count": 77,
+    "student_count": 23,
+    "frequency_score": "334.78"
+  },
+  {
+    "problem_id": 13760,
+    "wrong_count": 20,
+    "student_count": 6,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 65082,
+    "wrong_count": 20,
+    "student_count": 6,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 84353,
+    "wrong_count": 20,
+    "student_count": 6,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 24205,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 19946,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 89092,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 19709,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 16969,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 89665,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 19239,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 88987,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 90168,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 69486,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 24092,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 63467,
+    "wrong_count": 10,
+    "student_count": 3,
+    "frequency_score": "333.33"
+  },
+  {
+    "problem_id": 69269,
+    "wrong_count": 23,
+    "student_count": 7,
+    "frequency_score": "328.57"
+  },
+  {
+    "problem_id": 91422,
+    "wrong_count": 23,
+    "student_count": 7,
+    "frequency_score": "328.57"
+  },
+  {
+    "problem_id": 65070,
+    "wrong_count": 23,
+    "student_count": 7,
+    "frequency_score": "328.57"
+  },
+  {
+    "problem_id": 91613,
+    "wrong_count": 95,
+    "student_count": 29,
+    "frequency_score": "327.59"
+  },
+  {
+    "problem_id": 91401,
+    "wrong_count": 78,
+    "student_count": 24,
+    "frequency_score": "325.00"
+  },
+  {
+    "problem_id": 88683,
+    "wrong_count": 26,
+    "student_count": 8,
+    "frequency_score": "325.00"
+  },
+  {
+    "problem_id": 99015,
+    "wrong_count": 13,
+    "student_count": 4,
+    "frequency_score": "325.00"
+  },
+  {
+    "problem_id": 63137,
+    "wrong_count": 13,
+    "student_count": 4,
+    "frequency_score": "325.00"
+  },
+  {
+    "problem_id": 89725,
+    "wrong_count": 13,
+    "student_count": 4,
+    "frequency_score": "325.00"
+  },
+  {
+    "problem_id": 89984,
+    "wrong_count": 136,
+    "student_count": 42,
+    "frequency_score": "323.81"
+  },
+  {
+    "problem_id": 69275,
+    "wrong_count": 29,
+    "student_count": 9,
+    "frequency_score": "322.22"
+  },
+  {
+    "problem_id": 91379,
+    "wrong_count": 16,
+    "student_count": 5,
+    "frequency_score": "320.00"
+  },
+  {
+    "problem_id": 92122,
+    "wrong_count": 16,
+    "student_count": 5,
+    "frequency_score": "320.00"
+  },
+  {
+    "problem_id": 84468,
+    "wrong_count": 16,
+    "student_count": 5,
+    "frequency_score": "320.00"
+  },
+  {
+    "problem_id": 17098,
+    "wrong_count": 16,
+    "student_count": 5,
+    "frequency_score": "320.00"
+  },
+  {
+    "problem_id": 89792,
+    "wrong_count": 38,
+    "student_count": 12,
+    "frequency_score": "316.67"
+  },
+  {
+    "problem_id": 62965,
+    "wrong_count": 19,
+    "student_count": 6,
+    "frequency_score": "316.67"
+  },
+  {
+    "problem_id": 65002,
+    "wrong_count": 19,
+    "student_count": 6,
+    "frequency_score": "316.67"
+  },
+  {
+    "problem_id": 13578,
+    "wrong_count": 19,
+    "student_count": 6,
+    "frequency_score": "316.67"
+  },
+  {
+    "problem_id": 62998,
+    "wrong_count": 41,
+    "student_count": 13,
+    "frequency_score": "315.38"
+  },
+  {
+    "problem_id": 89975,
+    "wrong_count": 104,
+    "student_count": 33,
+    "frequency_score": "315.15"
+  },
+  {
+    "problem_id": 13983,
+    "wrong_count": 22,
+    "student_count": 7,
+    "frequency_score": "314.29"
+  },
+  {
+    "problem_id": 64760,
+    "wrong_count": 22,
+    "student_count": 7,
+    "frequency_score": "314.29"
+  },
+  {
+    "problem_id": 69183,
+    "wrong_count": 25,
+    "student_count": 8,
+    "frequency_score": "312.50"
+  },
+  {
+    "problem_id": 88875,
+    "wrong_count": 25,
+    "student_count": 8,
+    "frequency_score": "312.50"
+  },
+  {
+    "problem_id": 89176,
+    "wrong_count": 25,
+    "student_count": 8,
+    "frequency_score": "312.50"
+  },
+  {
+    "problem_id": 88885,
+    "wrong_count": 28,
+    "student_count": 9,
+    "frequency_score": "311.11"
+  },
+  {
+    "problem_id": 91612,
+    "wrong_count": 59,
+    "student_count": 19,
+    "frequency_score": "310.53"
+  },
+  {
+    "problem_id": 92211,
+    "wrong_count": 31,
+    "student_count": 10,
+    "frequency_score": "310.00"
+  },
+  {
+    "problem_id": 89391,
+    "wrong_count": 34,
+    "student_count": 11,
+    "frequency_score": "309.09"
+  },
+  {
+    "problem_id": 89378,
+    "wrong_count": 37,
+    "student_count": 12,
+    "frequency_score": "308.33"
+  },
+  {
+    "problem_id": 89980,
+    "wrong_count": 118,
+    "student_count": 39,
+    "frequency_score": "302.56"
+  },
+  {
+    "problem_id": 89578,
+    "wrong_count": 93,
+    "student_count": 31,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 91311,
+    "wrong_count": 45,
+    "student_count": 15,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 91306,
+    "wrong_count": 39,
+    "student_count": 13,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 91103,
+    "wrong_count": 36,
+    "student_count": 12,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 69484,
+    "wrong_count": 24,
+    "student_count": 8,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 94208,
+    "wrong_count": 24,
+    "student_count": 8,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 91813,
+    "wrong_count": 21,
+    "student_count": 7,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 13870,
+    "wrong_count": 18,
+    "student_count": 6,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 64919,
+    "wrong_count": 18,
+    "student_count": 6,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 94866,
+    "wrong_count": 18,
+    "student_count": 6,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 92023,
+    "wrong_count": 18,
+    "student_count": 6,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 94196,
+    "wrong_count": 15,
+    "student_count": 5,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 89961,
+    "wrong_count": 15,
+    "student_count": 5,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 65085,
+    "wrong_count": 15,
+    "student_count": 5,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 65074,
+    "wrong_count": 12,
+    "student_count": 4,
+    "frequency_score": "300.00"
+  },
+  {
+    "problem_id": 98815,
+    "wrong_count": 12,
+    "student_count": 4,
+    "frequency_score": "300.00"
+  }
+]
