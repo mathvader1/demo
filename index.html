@@ -979,14 +979,11 @@
             // 가상의 빈도 점수 (실제로는 SQL 쿼리 결과와 결합)
             const hybridResults = ncfRecs.map(rec => {
                 const mockFreqScore = Math.random() * 0.5 + 0.3; // 0.3-0.8 사이 가상 빈도 점수
-                // 빈도 점수를 정답률로 변환 (오답률 → 정답률)
-                const freqCorrectRate = 1.0 - mockFreqScore; // 정답률로 통일
-                const hybridScore = ncfWeight * rec.score + freqWeight * freqCorrectRate;
+                const hybridScore = ncfWeight * rec.score + freqWeight * mockFreqScore;
                 return {
                     itemId: rec.itemId,
                     ncfScore: rec.score,
-                    freqScore: freqCorrectRate, // 정답률로 표시
-                    freqWrongRate: mockFreqScore, // 원래 오답률도 보관
+                    freqScore: mockFreqScore,
                     hybridScore: hybridScore
                 };
             });
@@ -995,21 +992,10 @@
             
             let result = `🎯 <strong>하이브리드 추천 결과 (NCF:${ncfWeight} + 빈도:${freqWeight})</strong><br><br>`;
             
-            result += `<div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 5px; margin-bottom: 15px;">`;
-            result += `📊 <strong>점수 설명:</strong><br>`;
-            result += `• <strong>NCF 정답률</strong>: 이 학생이 해당 문제를 맞힐 확률<br>`;
-            result += `• <strong>빈도 정답률</strong>: 같은 약점을 가진 학생들의 정답률<br>`;
-            result += `• <strong>종합 점수</strong>: ${(ncfWeight*100).toFixed(0)}% × NCF + ${(freqWeight*100).toFixed(0)}% × 빈도<br>`;
-            result += `</div>`;
-            
             result += `<div style="background: rgba(128,0,128,0.1); padding: 10px; border-radius: 5px;">`;
             hybridResults.slice(0, 8).forEach((rec, i) => {
-                const confidenceIcon = rec.hybridScore > 0.9 ? "🔥" : rec.hybridScore > 0.8 ? "⭐" : rec.hybridScore > 0.7 ? "👍" : "🤔";
-                result += `${i+1}. 문제 ${rec.itemId} ${confidenceIcon}<br>`;
-                result += `&nbsp;&nbsp;&nbsp;📊 NCF 정답률: ${(rec.ncfScore * 100).toFixed(1)}% | `;
-                result += `📈 빈도 정답률: ${(rec.freqScore * 100).toFixed(1)}% | `;
-                result += `🎯 종합: ${(rec.hybridScore * 100).toFixed(1)}%<br>`;
-                result += `&nbsp;&nbsp;&nbsp;<small>💡 같은 약점 학생들의 오답률: ${(rec.freqWrongRate * 100).toFixed(1)}%</small><br><br>`;
+                result += `${i+1}. 문제 ${rec.itemId}<br>`;
+                result += `&nbsp;&nbsp;&nbsp;📊 NCF: ${(rec.ncfScore * 100).toFixed(1)}% | 📈 빈도: ${(rec.freqScore * 100).toFixed(1)}% | 🎯 종합: ${(rec.hybridScore * 100).toFixed(1)}%<br>`;
             });
             result += `</div>`;
             
