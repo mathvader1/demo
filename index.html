@@ -508,19 +508,16 @@
                 const dataSource = document.getElementById('dataSource').value;
                 
                 if (dataSource === 'synthetic') {
-                    this.log("🔄 실제 API 데이터 시도 중...");
+                    this.log("🔄 실제 정적 JSON 데이터 시도 중...");
                     const realData = await loadRealTrainingData(parseInt(document.getElementById('numSamples').value));
                     
                     if (realData && realData.length > 0) {
-                        this.log(`✅ 실제 API 데이터 사용: ${realData.length}개`);
+                        this.log(`✅ 실제 정적 JSON 데이터 사용: ${realData.length}개`);
                         return this.processRealData(realData);
                     } else {
-                        this.log("⚠️ 실제 API 데이터 로딩 실패, 가상 데이터로 폴백");
+                        this.log("⚠️ 정적 JSON 데이터 로딩 실패, 가상 데이터로 폴백");
                         return this.generateSyntheticData();
                     }
-                } else {
-                    this.log("📊 가상 데이터 생성 중...");
-                    return this.generateSyntheticData();
                 }
             }
             
